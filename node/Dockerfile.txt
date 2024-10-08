@@ -1,0 +1,20 @@
+# ベースイメージを指定
+FROM node:latest
+
+# 作業ディレクトリを設定
+WORKDIR /app
+
+# パッケージファイルをコピー
+COPY package*.json ./
+
+# パッケージをインストール
+RUN npm install
+
+# アプリケーションのソースコードをコピー
+COPY . .
+
+# ポートを指定
+EXPOSE 3000
+
+# 開発用サーバーを起動
+CMD ["npm", "start"]
